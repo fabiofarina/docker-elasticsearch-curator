@@ -4,9 +4,9 @@ This only job executed by the docker built from this repository is to clean the 
 
 It can be run as follows:
 
-	docker run -d -e DELAYED_START_IN_HOURS=12 -e INTERVAL_IN_HOURS=24 -e OLDER_THAN_IN_DAYS="10" --link es1:elasticsearch farinafa/elasticsearch-curator
+	docker run -d -e DELAYED_START_IN_HOURS=12 -e INTERVAL_IN_HOURS=24 -e OLDER_THAN_IN_DAYS="10" -e ELASTIC_HOST="elasticsearch" farinafa/elasticsearch-curator
 	
-where **es1** is the name of the elasticsearch container and
+where **elasticsearch** is the name of the elasticsearch container and
 
 * **INTERVAL\_IN\_HOURS**: The amount of time between two curator runs
 * **OLDER\_THAN\_IN\_DAYS**: Indicates all logs with a date exceeding this age can be deleted.
