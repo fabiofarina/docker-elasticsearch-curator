@@ -1,4 +1,5 @@
 FROM debian:jessie
+MAINTAINER Fabio Farina <fabio.farina@garr.it>
 
 
 RUN apt-get update -y && \
