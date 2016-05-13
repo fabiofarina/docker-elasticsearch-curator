@@ -7,12 +7,15 @@ RUN apt-get update -y && \
     pip install elasticsearch-curator==3.5.0 && \
     rm -rf /var/lib/apt/lists/*
 
-ENV INTERVAL_IN_HOURS=24
-ENV OLDER_THAN_IN_DAYS="20"
+ENV INTERVAL_IN_HOURS="24"
 ENV DELAYED_START_IN_HOURS="0"
-ENV ELASTIC_HOST=elasticsearch
 
-CMD sleep $(( 60*60*DELAYED_START_IN_HOURS )) && \
+ENV ELASTIC_HOST="elasticsearch"
+ENV OLDER_THAN_IN_DAYS="20"
+
+CMD echo DELAYED_START_IN_HOURS=$DELAYED_START_IN_HOURS && \
+    echo INTERVAL_IN_HOURS=$INTERVAL_IN_HOURS && \ 
+    sleep $(( 60*60*DELAYED_START_IN_HOURS )) && \
     while true; \
     do \
     echo -n "Curator run - start: `date`"; \ 
